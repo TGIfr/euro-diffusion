@@ -8,7 +8,7 @@ namespace euro_diffusion
 {
     class Parser
     {
-        private const string DefaultPath = @"D:\projects\smokelab\euro-diffusion\input.txt";
+        private const string DefaultPath = @"D:\projects\repos\euro-diffusion\input.txt";
 
         public List<List<Country>> ReadInputFile(string path = DefaultPath)
         {

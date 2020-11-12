@@ -48,6 +48,8 @@ namespace euro_diffusion
 
         public void PayToNeighbours()
         {
+            if(Neighbours.Count == 0)
+                throw new ArgumentException("City is not connected to other cities");
             foreach (var neighbour in Neighbours)
             {
                 var keys = Money.Keys.ToList();
