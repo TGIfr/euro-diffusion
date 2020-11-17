@@ -16,7 +16,8 @@ namespace euro_diffusion
         public readonly int MoneyCountries;
         public List<City> Neighbours = new List<City>();
 
-        public bool IsCompleted {
+        public bool IsCompleted
+        {
             get
             {
                 if (!_isCompleted && Money.Keys.Count == MoneyCountries)
@@ -34,13 +35,13 @@ namespace euro_diffusion
 
         public void AddNeighbour(City neighbour)
         {
-            if(neighbour != null)
+            if (neighbour != null)
                 Neighbours.Add(neighbour);
         }
 
         public void AddMoney(int amount, int country)
         {
-            if(MoneyCache.ContainsKey(country))
+            if (MoneyCache.ContainsKey(country))
                 MoneyCache[country] += amount;
             else
                 MoneyCache[country] = amount;
@@ -48,7 +49,7 @@ namespace euro_diffusion
 
         public void PayToNeighbours()
         {
-            if(Neighbours.Count == 0)
+            if (Neighbours.Count == 0)
                 throw new ArgumentException("City is not connected to other cities");
             foreach (var neighbour in Neighbours)
             {

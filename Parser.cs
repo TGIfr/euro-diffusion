@@ -12,7 +12,7 @@ namespace euro_diffusion
 
         public List<List<Country>> ReadInputFile(string path = DefaultPath)
         {
-            var result =  new List<List<Country>>();
+            var result = new List<List<Country>>();
             var input = ReadFile(path);
             var endOfInputFlag = false;
             var caseFlag = false;
@@ -23,7 +23,7 @@ namespace euro_diffusion
             {
                 var trimmedLine = line.Trim();
 
-                if(trimmedLine == "")
+                if (trimmedLine == "")
                     continue;
 
                 if (trimmedLine == "0")
@@ -35,7 +35,7 @@ namespace euro_diffusion
                 if (caseFlag)
                 {
                     var args = line.Split(" ");
-                    if(args.Length < 5 || args.Length > 5)
+                    if (args.Length != 5)
                         throw new ArgumentException("wrong number of arguments in country line");
                     var name = args[0];
                     var xl = int.Parse(args[1]);
@@ -49,12 +49,11 @@ namespace euro_diffusion
                         result.Add(curList);
                         caseFlag = false;
                     }
-                }
-                else
+                } else
                 {
-                    if (trimmedLine.All(char.IsDigit)) 
+                    if (trimmedLine.All(char.IsDigit))
                         numberOfCountries = int.Parse(line);
-                    else 
+                    else
                         throw new ArgumentException("wrong line with number of countries");
 
                     curList = new List<Country>();
@@ -64,7 +63,7 @@ namespace euro_diffusion
 
             }
 
-            if(!endOfInputFlag)
+            if (!endOfInputFlag)
                 throw new ArgumentException("No 0 at the end of file");
 
             return result;

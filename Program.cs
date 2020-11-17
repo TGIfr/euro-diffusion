@@ -6,7 +6,8 @@ namespace euro_diffusion
 {
     class Program
     {
-        static void Main(string[] args) {
+        static void Main(string[] args)
+        {
 
             Parser parser = new Parser();
 
@@ -14,26 +15,28 @@ namespace euro_diffusion
             try
             {
                 res = parser.ReadInputFile();
-            } 
-            catch (Exception e)
+            } catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return;
             }
 
             int caseNumber = 1;
-            foreach (var caseToSolve in res) {
+            foreach (var caseToSolve in res)
+            {
                 Console.WriteLine($"Case Number {caseNumber++}");
-                try {
+                try
+                {
                     var grid = new Grid(caseToSolve);
                     Console.Write(grid.SolveCase());
-                } catch (Exception e) {
+                } catch (Exception e)
+                {
                     Console.WriteLine(e.Message);
                 }
-               
+
             }
-            
-            
+
+
         }
     }
 }

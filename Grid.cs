@@ -28,8 +28,10 @@ namespace euro_diffusion
 
         private void InitializeCities()
         {
-            for (int i = 1; i < Length + 2; i++) {
-                for (int y = 1; y < Width + 2; y++) {
+            for (int i = 1; i < Length + 2; i++)
+            {
+                for (int y = 1; y < Width + 2; y++)
+                {
                     Cities[i, y] = null;
                 }
             }
@@ -44,8 +46,9 @@ namespace euro_diffusion
 
             for (int i = xl; i <= xh; i++)
             {
-                for (int y = yl; y <= yh; y++) {
-                    if(Cities[i, y] != null)
+                for (int y = yl; y <= yh; y++)
+                {
+                    if (Cities[i, y] != null)
                         throw new ArgumentException("countries intercept");
                     Cities[i, y] = new City(Countries.Count, index);
                     country.Cities.Add(Cities[i, y]);
@@ -55,13 +58,14 @@ namespace euro_diffusion
 
         private void SetNeighbours()
         {
-            for (int i = 1; i < Length+1; i++) {
-                for (int y = 1; y < Width+1; y++)
+            for (int i = 1; i < Length + 1; i++)
+            {
+                for (int y = 1; y < Width + 1; y++)
                 {
                     var curCity = Cities[i, y];
-                    if(curCity == null)
+                    if (curCity == null)
                         continue;
-                    
+
                     curCity.AddNeighbour(Cities[i, y + 1]);
                     curCity.AddNeighbour(Cities[i, y - 1]);
                     curCity.AddNeighbour(Cities[i + 1, y]);
@@ -76,7 +80,8 @@ namespace euro_diffusion
             {
                 city?.PayToNeighbours();
             }
-            foreach (var city in Cities) {
+            foreach (var city in Cities)
+            {
                 city?.AddCachedMoney();
             }
         }
@@ -93,8 +98,10 @@ namespace euro_diffusion
             while (countriesToCheck.Any())
             {
                 var completedCountries = new List<Country>();
-                foreach (var country in countriesToCheck) {
-                    if (country.IsCompleted) {
+                foreach (var country in countriesToCheck)
+                {
+                    if (country.IsCompleted)
+                    {
                         res += $"{country.Name} {tick} \n";
                         completedCountries.Add(country);
                     }
