@@ -13,7 +13,7 @@ namespace euro_diffusion
         public List<List<Country>> ReadInputFile(string path = DefaultPath)
         {
             var result = new List<List<Country>>();
-            var input = ReadFile(path);
+            List<string> input = ReadFile(path);
             var endOfInputFlag = false;
             var caseFlag = false;
             int numberOfCountries = 0;

@@ -39,19 +39,19 @@ namespace euro_diffusion
 
         private void AddCountryToGrid(Country country, int index)
         {
-            var xl = country.XL;
-            var yl = country.YL;
-            var xh = country.XH;
-            var yh = country.YH;
+            int xl = country.XL;
+            int yl = country.YL;
+            int xh = country.XH;
+            int yh = country.YH;
 
-            for (int i = xl; i <= xh; i++)
+            for (var i = xl; i <= xh; i++)
             {
-                for (int y = yl; y <= yh; y++)
+                for (var j = yl; j <= yh; j++)
                 {
-                    if (Cities[i, y] != null)
+                    if (Cities[i, j] != null)
                         throw new ArgumentException("countries intercept");
-                    Cities[i, y] = new City(Countries.Count, index);
-                    country.Cities.Add(Cities[i, y]);
+                    Cities[i, j] = new City(Countries.Count, index);
+                    country.Cities.Add(Cities[i, j]);
                 }
             }
         }
@@ -88,7 +88,7 @@ namespace euro_diffusion
 
         public string SolveCase()
         {
-            string res = "";
+            string result = "";
 
             int tick = 0;
 
@@ -102,7 +102,7 @@ namespace euro_diffusion
                 {
                     if (country.IsCompleted)
                     {
-                        res += $"{country.Name} {tick} \n";
+                        result += $"{country.Name} {tick} \n";
                         completedCountries.Add(country);
                     }
                 }
@@ -119,7 +119,7 @@ namespace euro_diffusion
                 }
             }
 
-            return res;
+            return result;
         }
     }
 }
